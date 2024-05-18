@@ -26,22 +26,16 @@ public:
 
 	void print_board() {
 
+		std::cout << "   -   -   -   -   -   -   -   -  \n";
+
 		for (int i = 0; i < 8; i++) {
 
 			for (int j = 0; j < 8; j++) {
-
-				if (i == 0 || j == 0) {
-					std::cout << "+";
-				}
-				
 				std::cout << " | ";
-
-
-
 				std::cout << board[i][j];
-				std::cout << " | ";
 			}
-			std::cout << "\n";
+			std::cout << " | \n";
+			std::cout << "   -   -   -   -   -   -   -   -  \n";
 		}
 		std::cout << std::endl;
 	}
