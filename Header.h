@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 class My_Class
 {
@@ -38,6 +39,24 @@ public:
 			std::cout << "   -   -   -   -   -   -   -   -  \n";
 		}
 		std::cout << std::endl;
+	}
+
+	void populate_board_test() {
+
+		int iy = 0; //row lables
+		int ix = 0; //column lables
+
+		for (int i = 0; i < 64; i++) {
+
+			if (iy > 7) {
+				iy = 0;
+				ix++;
+			}
+
+			board[iy][ix] = std::to_string(ix)[0];
+			iy++;
+
+		}
 	}
 
 private:
