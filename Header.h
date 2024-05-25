@@ -56,13 +56,54 @@ public:
 				iy++;
 			}
 
-			if (iy == 1) { // white pawn
-				board[ix][iy] = w_pawn;
+			// white side
+			if (iy == 0) {
+
+				if (ix == 0) 
+					board[ix][iy] = w_rook;
+				if (ix == 1) 
+					board[ix][iy] = w_knight;
+				if (ix == 2) 
+					board[ix][iy] = w_bishop;
+				if (ix == 3) 
+					board[ix][iy] = w_queen;
+				if (ix == 4)
+					board[ix][iy] = w_king;
+				if (ix == 5) 
+					board[ix][iy] = w_bishop;
+				if (ix == 6) 
+					board[ix][iy] = w_knight;
+				if (ix == 7)
+					board[ix][iy] = w_rook;
 			}
 
-			if (iy == 6) { // black pawn
-				board[ix][iy] = b_pawn;
+			if (iy == 1) // white pawn
+				board[ix][iy] = w_pawn;
+			
+
+			// black side
+			if (iy == 7) {
+
+				if (ix == 0)
+					board[ix][iy] = b_rook;
+				if (ix == 1)
+					board[ix][iy] = b_knight;
+				if (ix == 2)
+					board[ix][iy] = b_bishop;
+				if (ix == 3)
+					board[ix][iy] = b_queen;
+				if (ix == 4)
+					board[ix][iy] = b_king;
+				if (ix == 5)
+					board[ix][iy] = b_bishop;
+				if (ix == 6)
+					board[ix][iy] = b_knight;
+				if (ix == 7)
+					board[ix][iy] = b_rook;
 			}
+
+			if (iy == 6) // black pawn
+				board[ix][iy] = b_pawn;
 
 			ix++;
 		}
