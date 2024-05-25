@@ -30,11 +30,11 @@ public:
 		std::cout << xLable;
 		std::cout << xLine;
 
-		for (int i = 7; i > -1; i--) {
+		for (int iy = 7; iy > -1; iy--) {
 
-			for (int j = 0; j < 8; j++) {
+			for (int ix = 0; ix < 8; ix++) {
 				std::cout << yLine;
-				std::cout << board[i][j];
+				std::cout << board[ix][iy];
 			}
 			std::cout << yLine;
 			std::cout << "\n";
@@ -75,21 +75,21 @@ private:
 	std::string xLine =		"   -   -   -   -   -   -   -   -  \n";
 	std::string xLable =	"   a   b   c   d   e   f   g   h  \n";
 	std::string yLine =		" | ";
-
+	
 	char w_rook = 'R';
 	char w_pawn = 'P';
 	char w_queen = 'Q';
 	char w_king = 'K';
 	char w_bishop = 'B';
-	char w_knight = "N";
+	char w_knight = 'N';
 
-	char b_rook = "r";
+	char b_rook = 'r';
 	char b_pawn = 'p';
-	char b_queen = "q";
-	char b_king = "k";
-	char b_bishop = "b";
-	char b_knight = "n";
-
+	char b_queen = 'q';
+	char b_king = 'k';
+	char b_bishop = 'b';
+	char b_knight = 'n';
+	
 
 
 	char cell = ' ';
