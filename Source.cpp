@@ -8,7 +8,7 @@ int main() {
     
     chess.print_board();
 
-    chess.populate_board_test();
+    chess.populate_initial_board();
 
     chess.print_board();
     return 0;

@@ -45,21 +45,26 @@ public:
 		std::cout << std::endl;
 	}
 
-	void populate_board_test() {
+	void populate_initial_board() {
 
 		int iy = 0; //row lables
 		int ix = 0; //column lables
 
 		for (int i = 0; i < 64; i++) {
-
-			if (iy > 7) {
-				iy = 0;
-				ix++;
+			if (ix > 7) {
+				ix = 0;
+				iy++;
 			}
 
-			board[ix][iy] = std::to_string(ix)[0];
-			iy++;
+			if (iy == 1) { // white pawn
+				board[ix][iy] = w_pawn;
+			}
 
+			if (iy == 6) { // black pawn
+				board[ix][iy] = b_pawn;
+			}
+
+			ix++;
 		}
 	}
 
@@ -70,6 +75,22 @@ private:
 	std::string xLine =		"   -   -   -   -   -   -   -   -  \n";
 	std::string xLable =	"   a   b   c   d   e   f   g   h  \n";
 	std::string yLine =		" | ";
+
+	char w_rook = 'R';
+	char w_pawn = 'P';
+	char w_queen = 'Q';
+	char w_king = 'K';
+	char w_bishop = 'B';
+	char w_knight = "N";
+
+	char b_rook = "r";
+	char b_pawn = 'p';
+	char b_queen = "q";
+	char b_king = "k";
+	char b_bishop = "b";
+	char b_knight = "n";
+
+
 
 	char cell = ' ';
 };
