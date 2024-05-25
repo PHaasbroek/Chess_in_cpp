@@ -27,17 +27,21 @@ public:
 
 	void print_board() {
 
-		std::cout << "   -   -   -   -   -   -   -   -  \n";
+		std::cout << xLable;
+		std::cout << xLine;
 
-		for (int i = 0; i < 8; i++) {
+		for (int i = 7; i > -1; i--) {
 
 			for (int j = 0; j < 8; j++) {
-				std::cout << " | ";
+				std::cout << yLine;
 				std::cout << board[i][j];
 			}
-			std::cout << " | \n";
-			std::cout << "   -   -   -   -   -   -   -   -  \n";
+			std::cout << yLine;
+			std::cout << "\n";
+			std::cout << xLine;
+
 		}
+		std::cout << xLable;
 		std::cout << std::endl;
 	}
 
@@ -53,7 +57,7 @@ public:
 				ix++;
 			}
 
-			board[iy][ix] = std::to_string(ix)[0];
+			board[ix][iy] = std::to_string(ix)[0];
 			iy++;
 
 		}
@@ -62,5 +66,10 @@ public:
 private:
 	//std::vector<char> row;
 	std::vector < std::vector <char> > board;
+
+	std::string xLine =		"   -   -   -   -   -   -   -   -  \n";
+	std::string xLable =	"   a   b   c   d   e   f   g   h  \n";
+	std::string yLine =		" | ";
+
 	char cell = ' ';
 };
