@@ -11,6 +11,9 @@ int main() {
     chess.populate_initial_board();
 
     chess.print_board();
+
+    //std::cout << chess.yLable(0) << std::endl;
+
     return 0;
 }
 

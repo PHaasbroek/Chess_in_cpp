@@ -32,11 +32,16 @@ public:
 
 		for (int iy = 7; iy > -1; iy--) {
 
+			std::cout << " ";
+			std::cout << (iy + 1);
+
 			for (int ix = 0; ix < 8; ix++) {
 				std::cout << yLine;
 				std::cout << board[ix][iy];
 			}
+
 			std::cout << yLine;
+			std::cout << (iy + 1);
 			std::cout << "\n";
 			std::cout << xLine;
 
@@ -113,8 +118,8 @@ private:
 	//std::vector<char> row;
 	std::vector < std::vector <char> > board;
 
-	std::string xLine =		"   -   -   -   -   -   -   -   -  \n";
-	std::string xLable =	"   a   b   c   d   e   f   g   h  \n";
+	std::string xLine =		"     -   -   -   -   -   -   -   -\n";
+	std::string xLable =	"     a   b   c   d   e   f   g   h  \n";
 	std::string yLine =		" | ";
 	
 	char w_rook = 'R';
