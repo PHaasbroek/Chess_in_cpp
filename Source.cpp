@@ -12,7 +12,11 @@ int main() {
 
     chess.print_board();
 
-    chess.move_piece(0, 0, 4, 7);
+    chess.move_piece(2, 0, 6, 4);
+    chess.print_board();
+    chess.move_piece(6, 4, 4, 6);
+    chess.print_board();    
+    chess.move_piece(4, 6, 1, 3);
     chess.print_board();
 
 

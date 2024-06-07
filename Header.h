@@ -134,17 +134,87 @@ public:
 			return;
 		if (end_y < 0)
 			return;
+		if (start_x == end_x && start_y == end_y)
+			return;
 
-		valid_move = true;
+		//valid_move = true;
+
+		if (board[start_x][start_y] == w_bishop) {
+			std::cout << "rook selected" << std::endl;
+			valid_move = bishop_movement_valid(start_x, start_y, end_x, end_y);
+		}
 
 		if (valid_move) {
 			board[end_x][end_y] = board[start_x][start_y];
 			board[start_x][start_y] = cell;
-
 		}
 			
 		return;
 	}
+
+	bool king_movement_valid(int start_x, int start_y, int end_x, int end_y) {
+		// now that I think of it, the Kings' movement is the most complex as it consideres all other pieces' attack paths. For this reason I will be leaving it for last. 
+
+		if (board[end_x][end_y] == w_king || board[end_x][end_y] == b_king) {
+			return false; //this should never happen, but writing it anyway. 
+		}
+	}
+
+	bool bishop_movement_valid(int start_x, int start_y, int end_x, int end_y) {
+		int test_x;
+		int test_y;
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x++;
+			test_y++;
+
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x--;
+			test_y++;
+
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x--;
+			test_y--;
+
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x++;
+			test_y--;
+
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		std::cout << "invalid move" << std::endl;
+	}
+
 
 private:
 	//std::vector<char> row;
@@ -169,5 +239,7 @@ private:
 	char b_knight = 'n';
 	
 	char cell = ' ';
+
+	int move_number;
 
 };
