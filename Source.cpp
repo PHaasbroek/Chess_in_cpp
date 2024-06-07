@@ -12,6 +12,10 @@ int main() {
 
     chess.print_board();
 
+    chess.move_piece(0, 0, 4, 7);
+    chess.print_board();
+
+
     //std::cout << chess.yLable(0) << std::endl;
 
     return 0;

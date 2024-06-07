@@ -12,7 +12,7 @@ public:
 		std::vector<char> row;
 
 		for (int i = 0; i < 8; i++) {
-			row.push_back(' ');
+			row.push_back(cell);
 		}
 
 		for (int j = 0; j < 8; j++) {
@@ -20,7 +20,6 @@ public:
 		}
 		
 		std::cout << cell << std::endl;
-
 		std::cout << "Chess board initiated. ";
 		std::cout << std::endl;
 	}
@@ -32,8 +31,7 @@ public:
 
 		for (int iy = 7; iy > -1; iy--) {
 
-			std::cout << " ";
-			std::cout << (iy + 1);
+			std::cout << " " << (iy + 1);
 
 			for (int ix = 0; ix < 8; ix++) {
 				std::cout << yLine;
@@ -46,6 +44,7 @@ public:
 			std::cout << xLine;
 
 		}
+
 		std::cout << xLable;
 		std::cout << std::endl;
 	}
@@ -114,6 +113,39 @@ public:
 		}
 	}
 
+	void move_piece(int start_x, int start_y, int end_x, int end_y) {
+		
+		bool valid_move = false;
+
+		// eliminate invalid selections
+		if (start_x > 7)
+			return;
+		if (start_x < 0)
+			return;
+		if (start_y > 7)
+			return;
+		if (start_y < 0)
+			return;
+		if (end_x > 7)
+			return;
+		if (end_x < 0)
+			return;
+		if (end_y > 7)
+			return;
+		if (end_y < 0)
+			return;
+
+		valid_move = true;
+
+		if (valid_move) {
+			board[end_x][end_y] = board[start_x][start_y];
+			board[start_x][start_y] = cell;
+
+		}
+			
+		return;
+	}
+
 private:
 	//std::vector<char> row;
 	std::vector < std::vector <char> > board;
@@ -136,7 +168,6 @@ private:
 	char b_bishop = 'b';
 	char b_knight = 'n';
 	
-
-
 	char cell = ' ';
+
 };
