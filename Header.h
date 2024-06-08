@@ -12,14 +12,14 @@ public:
 		std::vector<char> row;
 
 		for (int i = 0; i < 8; i++) {
-			row.push_back(cell);
+			row.push_back(blank_cell);
 		}
 
 		for (int j = 0; j < 8; j++) {
 			board.push_back(row);
 		}
 		
-		std::cout << cell << std::endl;
+		std::cout << blank_cell << std::endl;
 		std::cout << "Chess board initiated. ";
 		std::cout << std::endl;
 	}
@@ -81,8 +81,8 @@ public:
 					board[ix][iy] = w_rook;
 			}
 
-			if (iy == 1) // white pawn
-				board[ix][iy] = w_pawn;
+			//if (iy == 1)  // white pawn
+				//board[ix][iy] = w_pawn;
 			
 
 			// black side
@@ -140,13 +140,18 @@ public:
 		//valid_move = true;
 
 		if (board[start_x][start_y] == w_bishop) {
-			std::cout << "rook selected" << std::endl;
+			std::cout << "bishop selected" << std::endl;
 			valid_move = bishop_movement_valid(start_x, start_y, end_x, end_y);
+		}
+
+		if (board[start_x][start_y] == w_rook) {
+			std::cout << "rook selected" << std::endl;
+			valid_move = rook_movement_valid(start_x, start_y, end_x, end_y);
 		}
 
 		if (valid_move) {
 			board[end_x][end_y] = board[start_x][start_y];
-			board[start_x][start_y] = cell;
+			board[start_x][start_y] = blank_cell;
 		}
 			
 		return;
@@ -169,8 +174,16 @@ public:
 
 		for (int i = 0; i < 8; i++) {
 			test_x++;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				break; // breaks the loop if a piece is met
 			}
 		}
 
@@ -179,8 +192,16 @@ public:
 
 		for (int i = 0; i < 8; i++) {
 			test_x--;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				break; // breaks the loop if a piece is met
 			}
 		}
 
@@ -189,8 +210,16 @@ public:
 
 		for (int i = 0; i < 8; i++) {
 			test_y++;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				break; // breaks the loop if a piece is met
 			}
 		}
 
@@ -199,8 +228,16 @@ public:
 
 		for (int i = 0; i < 8; i++) {
 			test_y--;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				break; // breaks the loop if a piece is met
 			}
 		}
 
@@ -216,6 +253,9 @@ public:
 			test_x++;
 			test_y++;
 
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
 			}
@@ -228,6 +268,9 @@ public:
 			test_x--;
 			test_y++;
 
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
 			}
@@ -240,6 +283,9 @@ public:
 			test_x--;
 			test_y--;
 
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
 			if (test_x == end_x && test_y == end_y) {
 				return true;
 			}
@@ -251,6 +297,9 @@ public:
 		for (int i = 0; i < 8; i++) {
 			test_x++;
 			test_y--;
+			
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
 
 			if (test_x == end_x && test_y == end_y) {
 				return true;
@@ -284,7 +333,7 @@ private:
 	char b_bishop = 'b';
 	char b_knight = 'n';
 	
-	char cell = ' ';
+	char blank_cell = ' ';
 
 	int move_number;
 
