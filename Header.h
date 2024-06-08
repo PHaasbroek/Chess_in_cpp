@@ -160,12 +160,57 @@ public:
 		}
 	}
 
-	bool bishop_movement_valid(int start_x, int start_y, int end_x, int end_y) {
-		int test_x;
-		int test_y;
+	bool rook_movement_valid(int start_x, int start_y, int end_x, int end_y) {
+		int test_x; 
+		int test_y; 
 
 		test_x = start_x;
 		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x++;
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x--;
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_y++;
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_y--;
+			if (test_x == end_x && test_y == end_y) {
+				return true;
+			}
+		}
+
+		std::cout << "invalid move" << std::endl;
+		return false;
+	}
+
+	bool bishop_movement_valid(int start_x, int start_y, int end_x, int end_y) {
+		int test_x = start_x;
+		int test_y = start_y;
 
 		for (int i = 0; i < 8; i++) {
 			test_x++;
@@ -213,6 +258,7 @@ public:
 		}
 
 		std::cout << "invalid move" << std::endl;
+		return false;
 	}
 
 
