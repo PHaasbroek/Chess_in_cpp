@@ -4,6 +4,8 @@
 int main() {
     std::cout << "Hello, World!" << std::endl;
     
+    std::vector < std::pair < int, int >> moves;
+
     My_Class chess;
     
     chess.print_board();
@@ -12,13 +14,8 @@ int main() {
 
     chess.print_board();
 
-    chess.move_piece(0, 0, 0, 2);
-    chess.print_board();
-    
-    chess.move_piece(2, 0, 8, 6);
-    chess.print_board();
+ 
 
-    //std::cout << chess.yLable(0) << std::endl;
 
     return 0;
 }

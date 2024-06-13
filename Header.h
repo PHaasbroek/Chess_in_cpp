@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <utility> // for the pair function
 #include <string>
 
 class My_Class
@@ -42,7 +43,6 @@ public:
 			std::cout << (iy + 1);
 			std::cout << "\n";
 			std::cout << xLine;
-
 		}
 
 		std::cout << xLable;
@@ -113,8 +113,34 @@ public:
 		}
 	}
 
+	void move_any_piece(int start_x, int start_y, int end_x, int end_y) {
+		// function for testing purposes
+		// eliminate invalid selections
+		if (start_x > 7)
+			return;
+		if (start_x < 0)
+			return;
+		if (start_y > 7)
+			return;
+		if (start_y < 0)
+			return;
+		if (end_x > 7)
+			return;
+		if (end_x < 0)
+			return;
+		if (end_y > 7)
+			return;
+		if (end_y < 0)
+			return;
+		if (start_x == end_x && start_y == end_y)
+			return;
+
+		board[end_x][end_y] = board[start_x][start_y];
+		board[start_x][start_y] = blank_cell;
+	}
+
 	void move_piece(int start_x, int start_y, int end_x, int end_y) {
-		
+
 		bool valid_move = false;
 
 		// eliminate invalid selections
@@ -153,7 +179,7 @@ public:
 			board[end_x][end_y] = board[start_x][start_y];
 			board[start_x][start_y] = blank_cell;
 		}
-			
+
 		return;
 	}
 
@@ -163,6 +189,134 @@ public:
 		if (board[end_x][end_y] == w_king || board[end_x][end_y] == b_king) {
 			return false; //this should never happen, but writing it anyway. 
 		}
+	}
+
+	bool is_white(char piece) {
+
+		if (piece == w_bishop)
+			return true;
+		if (piece == w_king)
+			return true;
+		if (piece == w_knight)
+			return true;
+		if (piece == w_pawn)
+			return true;
+		if (piece == w_queen)
+			return true;
+		if (piece == w_rook)
+			return true;
+		
+		return false;
+	}
+
+	bool is_black(char piece) {
+
+		if (piece == b_bishop)
+			return true;
+		if (piece == b_king)
+			return true;
+		if (piece == b_knight)
+			return true;
+		if (piece == b_pawn)
+			return true;
+		if (piece == b_queen)
+			return true;
+		if (piece == b_rook)
+			return true;
+
+		return false;
+	}
+
+
+
+	std::vector < std::pair < int, int> > rook_valid_moves(int start_x, int start_y) {
+		// the new rook function that returns the vector of 
+
+		std::vector < std::pair < int, int> > valid_moves;
+
+		bool is_white_team = is_white(board[start_x][start_y]);
+
+		int test_x;
+		int test_y;
+
+		//valid_moves.push_back(std::make_pair((int)1, (int)1)); // this works
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x++;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
+			if (board[test_x][test_y] == blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+				break; // breaks the loop if a piece is met
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_x--;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
+			if (board[test_x][test_y] == blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+				break; // breaks the loop if a piece is met
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_y++;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
+			if (board[test_x][test_y] == blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+				break; // breaks the loop if a piece is met
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 8; i++) {
+			test_y--;
+
+			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+				break; //break when out of bounds
+
+			if (board[test_x][test_y] == blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+
+			if (board[test_x][test_y] != blank_cell) {
+				valid_moves.push_back(std::make_pair(test_x, test_y));
+				break; // breaks the loop if a piece is met
+			}
+		}
+		return valid_moves;
 	}
 
 	bool rook_movement_valid(int start_x, int start_y, int end_x, int end_y) {
