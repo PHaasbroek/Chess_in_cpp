@@ -227,7 +227,14 @@ public:
 		return false;
 	}
 
+	bool is_king(char piece) {
+		if (piece == w_king)
+			return true;
+		if (piece == b_king)
+			return true;
 
+		return false;
+	}
 
 	std::vector < std::pair < int, int> > rook_valid_moves(int start_x, int start_y) {
 		// the new rook function that returns the vector of 
@@ -254,9 +261,17 @@ public:
 				valid_moves.push_back(std::make_pair(test_x, test_y));
 			}
 
-			if (board[test_x][test_y] != blank_cell) {
+			if (is_white(board[test_x][test_y]) == is_white_team) {
+				break; // same team => break the loop
+			}
+
+			if (is_white(board[test_x][test_y]) != is_white_team) {
+				if (is_king(board[test_x][test_y])) {
+					break; // break if a King is encountered. 
+				}
+
 				valid_moves.push_back(std::make_pair(test_x, test_y));
-				break; // breaks the loop if a piece is met
+				break; // other team
 			}
 		}
 
