@@ -14,7 +14,7 @@ int main() {
 
     chess.print_board();
 
- 
+    moves = chess.rook_valid_moves(0, 0);
 
 
     return 0;

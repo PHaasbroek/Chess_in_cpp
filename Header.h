@@ -236,17 +236,15 @@ public:
 		return false;
 	}
 
-	std::vector < std::pair < int, int> > rook_valid_moves(int start_x, int start_y) {
+	std::vector < std::pair < int, int> > rook_valid_moves(int const start_x, int const start_y) {
 		// the new rook function that returns the vector of 
 
 		std::vector < std::pair < int, int> > valid_moves;
 
-		bool is_white_team = is_white(board[start_x][start_y]);
+		bool is_white_piece = is_white(board[start_x][start_y]);
 
 		int test_x;
 		int test_y;
-
-		//valid_moves.push_back(std::make_pair((int)1, (int)1)); // this works
 
 		test_x = start_x;
 		test_y = start_y;
@@ -254,23 +252,27 @@ public:
 		for (int i = 0; i < 8; i++) {
 			test_x++;
 
+			std::cout << test_x << std::endl;
+
 			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
 				break; //break when out of bounds
+
+			if (is_white(board[test_x][test_y]) == is_white_piece) {
+				break; // same team => break the loop
+			}
 
 			if (board[test_x][test_y] == blank_cell) {
 				valid_moves.push_back(std::make_pair(test_x, test_y));
 			}
+			else if (is_white(board[test_x][test_y]) != is_white_piece) {
+				// if not a blank cell AND is of the other team, do this:
 
-			if (is_white(board[test_x][test_y]) == is_white_team) {
-				break; // same team => break the loop
-			}
-
-			if (is_white(board[test_x][test_y]) != is_white_team) {
 				if (is_king(board[test_x][test_y])) {
 					break; // break if a King is encountered. 
 				}
 
 				valid_moves.push_back(std::make_pair(test_x, test_y));
+				std::cout << "test_y++;" << std::endl;
 				break; // other team
 			}
 		}
@@ -281,16 +283,28 @@ public:
 		for (int i = 0; i < 8; i++) {
 			test_x--;
 
+			std::cout << test_x << std::endl;
+
 			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
 				break; //break when out of bounds
+
+			if (is_white(board[test_x][test_y]) == is_white_piece) {
+				break; // same team => break the loop
+			}
 
 			if (board[test_x][test_y] == blank_cell) {
 				valid_moves.push_back(std::make_pair(test_x, test_y));
 			}
+			else if (is_white(board[test_x][test_y]) != is_white_piece) {
+				// if not a blank cell AND is of the other team, do this:
 
-			if (board[test_x][test_y] != blank_cell) {
+				if (is_king(board[test_x][test_y])) {
+					break; // break if a King is encountered. 
+				}
+
 				valid_moves.push_back(std::make_pair(test_x, test_y));
-				break; // breaks the loop if a piece is met
+				std::cout << "test_y++;" << std::endl;
+				break; // other team
 			}
 		}
 
@@ -300,16 +314,28 @@ public:
 		for (int i = 0; i < 8; i++) {
 			test_y++;
 
+			std::cout << test_x << std::endl;
+
 			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
 				break; //break when out of bounds
+
+			if (is_white(board[test_x][test_y]) == is_white_piece) {
+				break; // same team => break the loop
+			}
 
 			if (board[test_x][test_y] == blank_cell) {
 				valid_moves.push_back(std::make_pair(test_x, test_y));
 			}
+			else if (is_white(board[test_x][test_y]) != is_white_piece) {
+				// if not a blank cell AND is of the other team, do this:
 
-			if (board[test_x][test_y] != blank_cell) {
+				if (is_king(board[test_x][test_y])) {
+					break; // break if a King is encountered. 
+				}
+
 				valid_moves.push_back(std::make_pair(test_x, test_y));
-				break; // breaks the loop if a piece is met
+				std::cout << "test_y++;" << std::endl;
+				break; // other team
 			}
 		}
 
@@ -319,22 +345,42 @@ public:
 		for (int i = 0; i < 8; i++) {
 			test_y--;
 
+			std::cout << test_x << std::endl;
+
 			if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
 				break; //break when out of bounds
+
+			if (is_white(board[test_x][test_y]) == is_white_piece) {
+				break; // same team => break the loop
+			}
 
 			if (board[test_x][test_y] == blank_cell) {
 				valid_moves.push_back(std::make_pair(test_x, test_y));
 			}
+			else if (is_white(board[test_x][test_y]) != is_white_piece) {
+				// if not a blank cell AND is of the other team, do this:
 
-			if (board[test_x][test_y] != blank_cell) {
+				if (is_king(board[test_x][test_y])) {
+					break; // break if a King is encountered. 
+				}
+
 				valid_moves.push_back(std::make_pair(test_x, test_y));
-				break; // breaks the loop if a piece is met
+				std::cout << "test_y++;" << std::endl;
+				break; // other team
 			}
 		}
+
+		std::cout << "Number of valid moves: " << valid_moves.size() << std::endl;
+		for (int i = 0; i < valid_moves.size(); i++) {
+			std::cout << valid_moves[i].first << " " << valid_moves[i].second << std::endl;
+		}
+
 		return valid_moves;
 	}
 
 	bool rook_movement_valid(int start_x, int start_y, int end_x, int end_y) {
+		// this function is no longer used
+
 		int test_x; 
 		int test_y; 
 
