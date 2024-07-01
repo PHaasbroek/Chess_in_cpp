@@ -81,8 +81,8 @@ public:
 					board[ix][iy] = w_rook;
 			}
 
-			//if (iy == 1)  // white pawn
-				//board[ix][iy] = w_pawn;
+			if (iy == 1)  // white pawn
+				board[ix][iy] = w_pawn;
 			
 
 			// black side
@@ -487,6 +487,110 @@ public:
 		}
 		return valid_moves;
 	}
+
+	std::vector < std::pair < int, int> > pawn_valid_moves(int const start_x, int const start_y) {
+		
+		std::vector < std::pair < int, int> > valid_moves;
+
+		bool is_white_piece = is_white(board[start_x][start_y]);
+
+		int test_x;
+		int test_y;
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 2; i++) {
+			if (is_white_piece) {
+				test_y++;
+
+				if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+					break; //break when out of bounds
+
+				if (board[test_x][test_y] == blank_cell)
+					valid_moves.push_back(std::make_pair(test_x, test_y));
+
+				if (board[test_x][test_y] != blank_cell)
+					break;
+
+				if (start_y != 1)
+					break;
+			}
+
+			if (!is_white_piece) {
+				test_y--;
+
+				if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+					break; //break when out of bounds
+
+				if (board[test_x][test_y] == blank_cell)
+					valid_moves.push_back(std::make_pair(test_x, test_y));
+
+				if (board[test_x][test_y] != blank_cell)
+					break;
+
+				if (start_y != 6)
+					break;
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 1; i++) {
+			if (is_white_piece) {
+				test_x++;
+				test_y++;
+
+				if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+					break; //break when out of bounds
+
+				if (is_black(board[test_x][test_y]))
+					valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+
+			if (!is_white_piece) {
+				test_x++;
+				test_y--;
+
+				if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+					break; //break when out of bounds
+
+				if (is_white(board[test_x][test_y]))
+					valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+		}
+
+		test_x = start_x;
+		test_y = start_y;
+
+		for (int i = 0; i < 1; i++) {
+			if (is_white_piece) {
+				test_x--;
+				test_y++;
+
+				if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+					break; //break when out of bounds
+
+				if (is_black(board[test_x][test_y]))
+					valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+
+			if (!is_white_piece) {
+				test_x--;
+				test_y--;
+
+				if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+					break; //break when out of bounds
+
+				if (is_white(board[test_x][test_y]))
+					valid_moves.push_back(std::make_pair(test_x, test_y));
+			}
+		}
+
+		return valid_moves;
+	}
+
 
 	bool rook_movement_valid(int start_x, int start_y, int end_x, int end_y) {
 		// this function is no longer used

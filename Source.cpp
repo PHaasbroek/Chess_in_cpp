@@ -12,9 +12,13 @@ int main() {
     chess.populate_initial_board();
     chess.print_board();
 
-    chess.move_any_piece(2, 7, 3, 3);
+    //chess.move_any_piece(2, 7, 3, 3);
+    //chess.print_board();
+    chess.move_any_piece(0, 6, 3, 4);
+    chess.move_any_piece(3, 1, 2, 3);
+
     chess.print_board();
-    moves = chess.queen_valid_moves(3, 3);
+    moves = chess.pawn_valid_moves(5, 1);
 
 
     std::cout << "Number of valid moves: " << moves.size() << std::endl;
