@@ -14,11 +14,11 @@ int main() {
 
     //chess.move_any_piece(2, 7, 3, 3);
     //chess.print_board();
-    chess.move_any_piece(0, 6, 3, 4);
-    chess.move_any_piece(3, 1, 2, 3);
+    //chess.move_any_piece(0, 6, 3, 4);
+    chess.move_any_piece(1, 0, 3, 4);
 
     chess.print_board();
-    moves = chess.pawn_valid_moves(5, 1);
+    moves = chess.knight_valid_moves(3, 4);
 
 
     std::cout << "Number of valid moves: " << moves.size() << std::endl;
