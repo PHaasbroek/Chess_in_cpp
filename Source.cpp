@@ -16,6 +16,7 @@ int main() {
     //chess.print_board();
     //chess.move_any_piece(0, 6, 3, 4);
     chess.move_any_piece(4, 0, 2, 2);
+    chess.move_any_piece(0, 7, 0, 2);
 
     chess.print_board();
     //moves = chess.king_valid_moves(4, 4);

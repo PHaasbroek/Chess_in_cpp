@@ -1050,241 +1050,32 @@ public:
 		return valid_moves;
 	}
 
-	//std::vector < std::pair < int, int> > king_cant_move(int const start_x, int const start_y) {
-	//	// return a vector of all the positions to which the king cannot move
+	std::vector < std::pair < int, int> > king_cant_move(int const start_x, int const start_y) {
+		// return a vector of all the positions to which the king cannot move
 
-	//	std::vector < std::pair < int, int> > cant_moves;
+		std::vector < std::pair < int, int> > king_cant_move;
+		std::vector < std::pair < int, int> > piece_moves;
 
-	//	bool is_white_piece = is_white(board[start_x][start_y]);
+		bool is_white_piece = is_white(board[start_x][start_y]);
+		int piece_moves_size = piece_moves.size();
 
-	//	for (int i = 0; i < 7; i++) {
-	//		// loop through the pieces to see the list of cells not allowed
-	//	}
+		// loop through the pieces to see the list of cells not allowed
+		for (int x_i = 0; x_i < 7; x_i++) {
+			for (int y_i = 0; y_i < 7; y_i++) {
+				if (is_black(board[x_i][y_i]) == is_white_piece) {
 
-	//	int test_x;
-	//	int test_y;
+					piece_moves = valid_moves(x_i, y_i);
 
-	//	test_x = start_x;
-	//	test_y = start_y;
+					// stick moves to the back of the king_cant_move vector
+					for (int i = 0; i < piece_moves_size; i++) {
+						king_cant_move.push_back(piece_moves[i]);
+					}
+				}
+			}
+		}
 
-	//	for (int i = 0; i < 1; i++) {
-	//		test_x++;
-	//		//test_y;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		test_x++;
-	//		test_y++;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		//test_x;
-	//		test_y++;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		test_x--;
-	//		test_y++;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		test_x--;
-	//		//test_y;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		test_x--;
-	//		test_y--;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		//test_x;
-	//		test_y--;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-	//	test_x = start_x;
-	//	test_y = start_y;
-
-	//	for (int i = 0; i < 1; i++) {
-	//		test_x++;
-	//		test_y--;
-
-	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
-	//			break; //break when out of bounds
-
-	//		if (board[test_x][test_y] == blank_cell) {
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//		}
-	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
-	//			break; // same team => break the loop
-	//		}
-	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
-	//			// if not a blank cell AND is of the other team, do this:
-
-	//			if (is_king(board[test_x][test_y]))
-	//				break; // break if a King is encountered. 
-
-	//			valid_moves.push_back(std::make_pair(test_x, test_y));
-	//			break; // other team
-	//		}
-	//	}
-
-
-
-
-	//	return valid_moves;
-	//}
+		return king_cant_move;
+	}
 
 	std::vector < std::pair < int, int > > valid_moves(int const start_x, int const start_y) {
 
