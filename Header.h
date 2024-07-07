@@ -592,7 +592,6 @@ public:
 	}
 
 	std::vector < std::pair < int, int> > knight_valid_moves(int const start_x, int const start_y) {
-		// the new rook function that returns the vector of 
 
 		std::vector < std::pair < int, int> > valid_moves;
 
@@ -821,7 +820,6 @@ public:
 	}
 
 	std::vector < std::pair < int, int> > king_valid_moves(int const start_x, int const start_y) {
-		// the new rook function that returns the vector of 
 
 		std::vector < std::pair < int, int> > valid_moves;
 
@@ -1046,7 +1044,271 @@ public:
 			}
 		}
 
+
+
+
 		return valid_moves;
+	}
+
+	//std::vector < std::pair < int, int> > king_cant_move(int const start_x, int const start_y) {
+	//	// return a vector of all the positions to which the king cannot move
+
+	//	std::vector < std::pair < int, int> > cant_moves;
+
+	//	bool is_white_piece = is_white(board[start_x][start_y]);
+
+	//	for (int i = 0; i < 7; i++) {
+	//		// loop through the pieces to see the list of cells not allowed
+	//	}
+
+	//	int test_x;
+	//	int test_y;
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		test_x++;
+	//		//test_y;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		test_x++;
+	//		test_y++;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		//test_x;
+	//		test_y++;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		test_x--;
+	//		test_y++;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		test_x--;
+	//		//test_y;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		test_x--;
+	//		test_y--;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		//test_x;
+	//		test_y--;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+	//	test_x = start_x;
+	//	test_y = start_y;
+
+	//	for (int i = 0; i < 1; i++) {
+	//		test_x++;
+	//		test_y--;
+
+	//		if (test_x < 0 || test_x > 7 || test_y < 0 || test_y > 7)
+	//			break; //break when out of bounds
+
+	//		if (board[test_x][test_y] == blank_cell) {
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//		}
+	//		else if (is_white(board[test_x][test_y]) == is_white_piece) {
+	//			break; // same team => break the loop
+	//		}
+	//		else if (is_white(board[test_x][test_y]) != is_white_piece) {
+	//			// if not a blank cell AND is of the other team, do this:
+
+	//			if (is_king(board[test_x][test_y]))
+	//				break; // break if a King is encountered. 
+
+	//			valid_moves.push_back(std::make_pair(test_x, test_y));
+	//			break; // other team
+	//		}
+	//	}
+
+
+
+
+	//	return valid_moves;
+	//}
+
+	std::vector < std::pair < int, int > > valid_moves(int const start_x, int const start_y) {
+
+		if (board[start_x][start_y] == b_pawn || board[start_x][start_y] == w_pawn) {
+			return pawn_valid_moves(start_x, start_y);
+		}
+		if (board[start_x][start_y] == b_bishop || board[start_x][start_y] == w_bishop) {
+			return bishop_valid_moves(start_x, start_y);
+		}
+		if (board[start_x][start_y] == b_rook || board[start_x][start_y] == w_rook) {
+			return rook_valid_moves(start_x, start_y);
+		}
+		if (board[start_x][start_y] == b_knight || board[start_x][start_y] == w_knight) {
+			return knight_valid_moves(start_x, start_y);
+		}
+		if (board[start_x][start_y] == b_queen || board[start_x][start_y] == w_queen) {
+			return queen_valid_moves(start_x, start_y);
+		}
+		if (board[start_x][start_y] == b_king || board[start_x][start_y] == w_king) {
+			return king_valid_moves(start_x, start_y);
+		}
+
+		std::vector < std::pair < int, int> > no_moves;
+		return no_moves;
 	}
 
 	bool rook_movement_valid(int start_x, int start_y, int end_x, int end_y) {
@@ -1130,7 +1392,7 @@ public:
 		std::cout << "invalid move" << std::endl;
 		return false;
 	}
-
+	
 	bool bishop_movement_valid(int start_x, int start_y, int end_x, int end_y) {
 		int test_x = start_x;
 		int test_y = start_y;
@@ -1195,7 +1457,7 @@ public:
 		std::cout << "invalid move" << std::endl;
 		return false;
 	}
-
+	
 
 private:
 	//std::vector<char> row;
