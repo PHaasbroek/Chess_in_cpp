@@ -1,20 +1,32 @@
 #include "Header.h"
 
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    
+int main()
+{
     My_Class chess;
-    
-    chess.print_board();
 
-    chess.populate_initial_board();
+	std::string user_input{ "No Input" };
 
-    chess.print_board();
+	while (true)
+	{
+		while (true)
+		{
+			std::cout << "Select a piece using it's coordinates (enter 'x' to exit): " << std::endl;
+			std::cin >> user_input;
 
-    //std::cout << chess.yLable(0) << std::endl;
-
+			// If the user wants to exit
+			if (user_input == "x")
+			{
+				break;
+			}
+			chess.select_piece(user_input);
+			//chess.move_piece(user_input);
+			chess.print_board();
+		}
+		if (user_input == "x")
+		{
+			break;
+		}
+	}
     return 0;
 }
-
-
