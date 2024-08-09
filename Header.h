@@ -27,25 +27,25 @@ public:
 
 	void print_board() {
 
-		std::cout << xLable;
-		std::cout << xLine;
+		std::cout << x_lable;
+		std::cout << x_line;
 
 		for (int iy = 7; iy > -1; iy--) {
 
 			std::cout << " " << (iy + 1);
 
 			for (int ix = 0; ix < 8; ix++) {
-				std::cout << yLine;
+				std::cout << y_line;
 				std::cout << board[ix][iy];
 			}
 
-			std::cout << yLine;
+			std::cout << y_line;
 			std::cout << (iy + 1);
 			std::cout << "\n";
-			std::cout << xLine;
+			std::cout << x_line;
 		}
 
-		std::cout << xLable;
+		std::cout << x_lable;
 		std::cout << std::endl;
 	}
 
@@ -1292,9 +1292,9 @@ private:
 	//std::vector<char> row;
 	std::vector < std::vector <char> > board;
 
-	std::string xLine =		"     -   -   -   -   -   -   -   -\n";
-	std::string xLable =	"     a   b   c   d   e   f   g   h  \n";
-	std::string yLine =		" | ";
+	std::string x_line =		"     -   -   -   -   -   -   -   -\n";
+	std::string x_lable =	"     a   b   c   d   e   f   g   h  \n";
+	std::string y_line =		" | ";
 	
 	char w_rook = 'R';
 	char w_pawn = 'P';
